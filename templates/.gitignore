@@ -1,0 +1,25 @@
+# Virtual environment
+my_env/
+
+# Byte-compiled files
+*.pyc
+__pycache__/
+
+# Environment variables
+.env
+
+# IDE settings
+.vscode/
+*.pyc
+
+# Compiled Python files
+*.pyc
+
+# Flask migration directory
+migrations/
+
+# Local development configuration
+instance/
+
+# SQLite database
+*.db
