@@ -1,0 +1,11 @@
+<section id="experience">
+    <h2>Experience</h2>
+    {% for exp in experience %}
+        <h3>{{ exp.position }} at {{ exp.company }} ({{ exp.duration }})</h3>
+        <ul>
+            {% for res in exp.responsibilities %}
+                <li>{{ res }}</li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+</section>
