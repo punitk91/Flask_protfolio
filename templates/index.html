@@ -39,18 +39,21 @@
             text-decoration: underline;
         }
 
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: rgba(255, 255, 255, 0.8);
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            animation: fadeIn 1.5s ease-out;
-            text-align: center; /* Center text in the container */
-        }
+        container {
+        max-width: 800px;
+        margin: 20px auto; /* Updated to center the container horizontally */
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        animation: fadeIn 1.5s ease-out;
+        text-align: center; /* Center text in the container */
+    }
 
         section {
             margin-top: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1.5s ease-out;
         }
 
         footer {
@@ -81,11 +84,39 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             animation: fadeIn 1.5s ease-out;
         }
+
+        /* Add styles for the profile image */
+        #profileImage {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        /* Add animation for the profile image */
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/randomcolor/0.6.2/randomColor.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            // Add animation to the profile image
+            anime({
+                targets: '#profileImage',
+                rotate: 360,
+                duration: 2000,
+                loop: true,
+                easing: 'linear'
+            });
+
             // Your existing JavaScript code...
         });
     </script>
@@ -103,29 +134,84 @@
         <a href="#achievements">Achievements</a>
     </nav>
 
-    <div class="container">
-        <section id="about">
-            <h2>{{ name }}</h2>
-            <p>{{ profession }}</p>
-        </section>
+    <!-- About Me Section -->
+    <!-- About Me Section -->
+<div class="container" id="about">
+    <section style="background-color: #87CEEB; padding: 30px;">
 
-        <section id="experience">
+        <!-- Add your profile image -->
+        <img id="profileImage" src="https://source.unsplash.com/150x150/?computer" alt="{{ name }}">
+
+        <!-- Add a description about yourself -->
+        <h2>{{ name }}</h2>
+        <p>{{ profession }}</p>
+        <p style="font-size: 18px; line-height: 1.6; color: #333;">
+            Welcome to my portfolio! I am a seasoned software engineer with a passion for building cutting-edge solutions. 
+            Over the course of my 5+ years in the industry, I have successfully led and contributed to the development of 
+            customer-grade products. My expertise spans a wide range of areas, including Python application development, 
+            API design and implementation, SQL and NoSQL databases, and cloud-based solutions.
+
+            In the fast-paced world of technology, I thrive on crafting solutions that not only meet but exceed customer expectations. 
+            My commitment to excellence, paired with my leadership skills, has enabled me to guide teams to success and deliver 
+            high-quality products.
+
+            Let's embark on a journey of innovation together. Explore my portfolio to learn more about my experiences and projects.
+        </p>
+        
+        <style>
+            /* Add a subtle rotation animation to the profile image */
+            @keyframes rotate {
+                from {
+                    transform: rotate(0deg);
+                }
+                to {
+                    transform: rotate(360deg);
+                }
+            }
+
+            #profileImage {
+                border-radius: 50%;
+                width: 150px;
+                height: 150px;
+                object-fit: cover;
+                margin-bottom: 10px;
+                animation: rotate 2s linear infinite;
+            }
+        </style>
+    </section>
+</div>
+
+
+    <!-- Experience Section -->
+    <div class="container" id="experience">
+        <section>
             <h2>Experience</h2>
             <p>{{ experience }}</p>
         </section>
+    </div>
 
-        <section id="education">
+    <!-- Education Section -->
+    <div class="container" id="education">
+        <section>
             <h2>Education</h2>
             <p>{{ education }}</p>
         </section>
+    </div>
 
-        <section id="contact">
+    <!-- Contact Section -->
+    <div class="container" id="contact">
+        <section>
             <h2>Contact</h2>
-            <p>Connect with me via WhatsApp: <a href="https://wa.me/1234567890">Chat on WhatsApp</a></p>
-            <p>Download my resume: <a href="/path/to/your/resume.pdf" download>Download Resume</a></p>
-        </section>
+            <p>Connect with me via WhatsApp: <a href="https://wa.me/8880144666">Chat on WhatsApp</a></p>
+            <a href="{{ url_for('static', filename='test.pdf') }}" download>Download Resume</a>
 
-        <section id="achievements">
+
+        </section>
+    </div>
+
+    <!-- Achievements Section -->
+    <div class="container" id="achievements">
+        <section>
             <h2>Achievements</h2>
             <ul>
                 <li>Achievement 1</li>
@@ -138,27 +224,5 @@
     <footer>
         © 2023 {{ name }}'s Portfolio
     </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Fade in the title with Anime.js
-            anime({
-                targets: '#portfolioHeader',
-                opacity: 1,
-                duration: 1500,
-                easing: 'easeInOutQuad'
-            });
-
-            // Generate random colors for the header and footer with RandomColor.js
-            const header = document.getElementById('portfolioHeader');
-            const footer = document.getElementById('portfolioFooter');
-
-            const headerColor = randomColor();
-            const footerColor = randomColor();
-
-            header.style.backgroundColor = headerColor;
-            footer.style.backgroundColor = footerColor;
-        });
-    </script>
 </body>
 </html>
